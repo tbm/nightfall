@@ -66,7 +66,7 @@
   morekeywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, let, void, while, with, class, export, boolean, throw, implements, import, this},
   keywordstyle=\color{purple}\bfseries,
   classoffset=1,
-  morekeywords={function},%funtion names
+  morekeywords={function},%function names
   keywordstyle=\color{lightblue}\bfseries,
   classoffset=2,
   morekeywords={log},
@@ -417,7 +417,7 @@ The ZoKrates JavaScript wrapper:
   \item[--] Performs a Trusted Setup:
   \begin{itemize}
     \item[--] Mounts `.code' files into a ZoKrates container;
-    \item[--] Compiles this code into contraints;
+    \item[--] Compiles this code into constraints;
     \item[--] Performs the `trusted setup' to output a `proving key' and a `verification key'
     \item[--] Outputs this `proving key' and `verification key' into the mounter directory of the user's local machine;
     \item[--] Jsonifies the `verification key'.
@@ -587,7 +587,7 @@ We outline his steps below. If you're unfamiliar with the Smart Contracts being 
 
 \subsection*{Notes for a User}
 
-Ordinary Users of a Nightfall infrastructire do not need to (and should not!) perform a trusted setup themselves. Only the original creator of the Shield contracts (Tom) needs to.\\
+Ordinary Users of a Nightfall infrastructure do not need to (and should not!) perform a trusted setup themselves. Only the original creator of the Shield contracts (Tom) needs to.\\
 \\
 Since the trusted setup involves a source of randomness, the (proving key, verification key) pair for a given computation will change each time the trusted setup is performed.\\
 \\
@@ -2213,7 +2213,7 @@ Suppose Bob (now the owner of $\alpha$ because he knows the secret key $sk^{Z,(n
 Then he will need to effectively `reveal' the contents of his token commitment $Z_B$ in order to convince the Shield contract that he is indeed entitled to withdraw $\alpha$ from escrow.
 We call this act of converting from a `private' token commitment back to its `public' counterpart a `\textbf{burn}'.\\
 \\
-Note that by burning a token commitment, Bob is relvealing information which was previously private; namely, the asset $\alpha$. Bob could continue to use an anonymous Ethereum address when calling the `burn' transaction, but analytics of public ERC-721 transactions thereafter will likely eventually reveal that it was Bob who burned $\alpha$. We'll have Bob use his public Ethereum address `burn', for simplicity.\\
+Note that by burning a token commitment, Bob is revealing information which was previously private; namely, the asset $\alpha$. Bob could continue to use an anonymous Ethereum address when calling the `burn' transaction, but analytics of public ERC-721 transactions thereafter will likely eventually reveal that it was Bob who burned $\alpha$. We'll have Bob use his public Ethereum address `burn', for simplicity.\\
 \\
 
 \noindent
@@ -2614,7 +2614,7 @@ Let's elaborate on each of the checks and calculations constraining the inputs t
   \begin{itemize}
     \item[--] Bob is the owner of a token commitment (because he knows its secret key)
     \item[--] Said token commitment is indeed a leaf of the on-chain Merkle Tree $M_{n+m+k-1}$.
-    \item[--] The token commitment does indeend represent the ERC-721 token with tokenId $=\bm{\alpha}$ (remember that $\alpha$ is a public input to a `burn' zk-SNARK).
+    \item[--] The token commitment does indeed represent the ERC-721 token with tokenId $=\bm{\alpha}$ (remember that $\alpha$ is a public input to a `burn' zk-SNARK).
   \end{itemize}
 
   Bob commits to burning his token $Z_B$ in the next step:
@@ -2886,7 +2886,7 @@ In this section, we outline Nightfall's protocol for minting an ERC-20 commitmen
 \noindent
 Suppose Alice owns ERC-20 tokens of value $c$
 (denominated in the ERC-20 token's currency).
-Suppose Alice wishes to create a private token commitment, representating her ownership of value $c$.\\
+Suppose Alice wishes to create a private token commitment, representing her ownership of value $c$.\\
 \\
 For Alice to mint a token commitment $Z_c$ representing value $c$ on the blockchain, under zero knowledge, she follows the steps in fig~\ref{fig:fMintAlgorithm}. Note: We avoid using $Z_A$ (which was used to stress Alice's ownership in the non-fungible section), because Alice will own more than one token commitment when we explain `transfers'.
 \\
@@ -3286,7 +3286,7 @@ Let $f$ be the balancing amount, so that $c+d = e+f$. In this example, we can th
 \\
 Note that a fungible commitment transfer in Nightfall always requires \textbf{two} `input' commitments and \textbf{two} `output' commitments. There are several reasons for this:
 \begin{itemize}
-  \item We're using zk-SNARKs to attest to proof of a `transfer' computation. Due to the way a computation (a set of constraints) is abstracted into a (proving key, verification key) pair, the computations cannot be dynamically sized. That is, the number of variables (public and private inputs) being passed into the computation must be of a fixed size. Futher, only fixed-sized for-loops are possible within the computation.
+  \item We're using zk-SNARKs to attest to proof of a `transfer' computation. Due to the way a computation (a set of constraints) is abstracted into a (proving key, verification key) pair, the computations cannot be dynamically sized. That is, the number of variables (public and private inputs) being passed into the computation must be of a fixed size. Further, only fixed-sized for-loops are possible within the computation.
 
   Therefore, if we wanted to allow different permutations of `number of inputs' and `number of outputs', we would need to perform a trusted setup for each permutation; store the verification key for each on-chain; and distribute each proving key.
 
@@ -4034,7 +4034,7 @@ Suppose Bob (now the owner of $Z_e$ because he knows the secret key $sk_B$) wish
 Then he will need to effectively `reveal' the contents of his token commitment $Z_e$ in order to convince the Shield contract that he is indeed entitled to withdraw $e$ from escrow.
 We call this act of converting from a `private' token commitment back to its `public' counterpart a `\textbf{burn}'.
 \\
-Note that by burning a token commitment, Bob is relvealing information which was previously private; namely, the value $e$. Bob could continue to use an anonymous Ethereum address when calling the `burn' transaction, but analytics of public ERC-20 transactions thereafer will likely eventually reveal that it was Bob who burned $e$. We'll have Bob use his public Ethereum address `burn', for simplicity.\\
+Note that by burning a token commitment, Bob is revealing information which was previously private; namely, the value $e$. Bob could continue to use an anonymous Ethereum address when calling the `burn' transaction, but analytics of public ERC-20 transactions thereafter will likely eventually reveal that it was Bob who burned $e$. We'll have Bob use his public Ethereum address `burn', for simplicity.\\
 \\
 
 \noindent
@@ -4452,7 +4452,7 @@ Let's elaborate on each of the checks and calculations constraining the inputs t
   \begin{itemize}
     \item[--] Bob is the owner of a token commitment (because he knows its secret key)
     \item[--] Said token commitment is indeed a leaf of the on-chain Merkle Tree $M_{n+m+k+l}$.
-    \item[--] The token commitment does indeend represent a value of $e$ ERC-20 tokens (remember that $e$ is a public input to a `burn' zk-SNARK).
+    \item[--] The token commitment does indeed represent a value of $e$ ERC-20 tokens (remember that $e$ is a public input to a `burn' zk-SNARK).
   \end{itemize}
 
   Bob commits to burning his token $Z_e$ in the next step:
